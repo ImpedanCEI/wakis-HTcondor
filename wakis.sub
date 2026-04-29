@@ -1,0 +1,22 @@
+if !defined FNAME
+    FNAME               = jupyter_notebook
+endif
+
+ID                      = $(Cluster).$(Process)
+
+output                  = ./logs/$(FNAME).$(ID).out
+error                   = ./logs/$(FNAME).$(ID).err
+log                     = ./logs/$(FNAME).$(Cluster).log
+
+should_transfer_files   = NO
+
+request_GPUs            = 4
+request_CPUs            = 1
+request_memory          = 32GB
+requirements            = GPUs_Capability >= 8.0
++JobFlavour             = "espresso"
++AccountingGroup        = your_acct_group
+
+executable              = wakis.sh
+
+queue 1
