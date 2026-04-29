@@ -54,11 +54,11 @@ To submit jobs to HTcondor, one needs a submission file `.sub` that helps the ba
 
 ```
 myschedd bump
-condor_submit -i jupyter.sub
+condor_submit -i wakis.sub
 ```
 
 
-* jupyter.sub: 
+* wakis.sub: 
 ```bash
 if !defined FNAME
     FNAME               = jupyter_notebook
@@ -79,14 +79,14 @@ requirements            = GPUs_Capability >= 8.0
 +JobFlavour             = "espresso"
 +AccountingGroup        = your_acct_group
 
-executable              = jupyter.sh
+executable              = wakis.sh
 
 queue 1
 ```
 
 The other script we need is the one to execute on the node that has been allocated to us based on the submission script. The following script will spawn a `jupyer notebook` on the node, and reverse tunnel back to `lxplus` so we can forward tunnel it to our local PC and open it in the browser. The working folder can also be set to something different than AFS, and could be in `eos/` for example. 
 
-* jupyter.sh
+* wakis.sh
 
 ```bash
 #!/bin/bash
@@ -150,7 +150,7 @@ jupyter lab \
 
 ## 3. Tunneling your jupyter notebook back to your local PC. 
 
-The script in `jupyter.sh` is setup so it prints the necessary instructions for you to copy paste in your local PC. It will be in the form of (with different port and node number):
+The script in `wakis.sh` is setup so it prints the necessary instructions for you to copy paste in your local PC. It will be in the form of (with different port and node number):
 
 ```
 ssh -L 8889:localhost:8889 lxplus928.cern.ch -N
