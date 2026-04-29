@@ -7,9 +7,6 @@ For Wakis simulations, it is very useful to inspect the generated grid and mater
 
 *And this is exactly what this guide is about!*
 
-![](https://codimd.web.cern.ch/uploads/upload_049eef182f5667996ba384dfcc286ad2.gif)
-
-
 ## 1. Prepare you Python instalation
 
 The setup assumes that you have a working python installation in your `afs/WORK` folder or CERNBox `eos/` folder. Alternatively, a version that sources a `cvmfs` docker container can be easily implemented from this guide. Everything can be accessed from lxplus:
